@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
         "laravel/fortify": "^1.8",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
@@ -23,6 +23,7 @@
         "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
+        "files": ["App\\Traits\\Helpers.php"],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
