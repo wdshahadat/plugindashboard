@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
-Route::get('/dashboard', 'DashboardController@index');
-Route::post('/plugin/info', 'DashboardController@pluginInfo');
+Route::get('/dashboard', 'DashboardController@index')->name('plugin.dashboard');
+Route::post('/plugin/info', 'DashboardController@pluginInfo')->name('plugin.info');
 
 Auth::routes();
 
