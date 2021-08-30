@@ -71,9 +71,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ url('/') }}" class="brand-link">
-                <img src="https://pixelaar.com/wp-content/uploads/2020/07/main_logo.png.webp" alt="Pixelaar Logo"
+                <img src="{{ assets('assets/images/demo-logo.jpg') }}" alt="Demo Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Pixelaar</span>
+                <span class="brand-text font-weight-light">Demo</span>
             </a>
 
             <!-- Sidebar -->
@@ -85,7 +85,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Plugin Dashboad</a>
+                        <a href="{{ url('/') }}" class="d-block">Plugin Dashboad</a>
                     </div>
                 </div>
 
