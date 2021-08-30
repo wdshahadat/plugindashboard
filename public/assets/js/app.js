@@ -1,21 +1,23 @@
+
 let baseurl = document.querySelector('meta[name="base-url"]').content;
 
-$(document).on("change", 'select[name="slug"]', function (e) {
-    $(".selected-plugin-text").text(
-        $('select[name="slug"] option:selected').text()
-    );
-});
-
 // call plugin http request to get plugin info
-$(document).on("click", "#getInfo", function () {
+$(document).on("click", "#getInfo", function (e) {
     let slug = $('select[name="slug"]').val();
     let dateRange = $("#dateRange").val();
     if (slug !== "null" && dateRange.length > 20) {
+        this.setAttribute("disabled", "disabled");
+        $(".box-container>div>div, .main-chart > div").addClass("pre-l");
         axios
             .post(`${baseurl}plugin/info`, { slug, dateRange })
             .then((response) => {
+                $("#getInfo").removeAttr("disabled");
                 chartHandle(response);
             });
+    } else {
+        toastr.error(
+            "Sorry! Please fill all required fields first then search."
+        );
     }
 });
 
@@ -30,6 +32,11 @@ function chartHandle(response) {
         activation < 0 ? 0 : activation
     );
 
+    $(".box-container>div>div, .main-chart > div").removeClass("pre-l");
+    if (response.data.activation.length < 1) {
+        toastr.info("Sorry! Plugin info not available.");
+    }
+
     $(".totalDownload").text(response.data.totalDownload);
     $(".deactivation-rate h1").text(response.data.totalDeactivate + "%");
     $(".activation-rate h1").text(response.data.totalActivate + "%");
@@ -38,6 +45,11 @@ function chartHandle(response) {
     );
     $(".deactivated h1").text(
         numberFormat(response.data.totalDeactivate * 1000)
+    );
+
+
+    $(".selected-plugin-text").text(
+        $('select[name="slug"] option:selected').text()
     );
 
     new Chart(cartDom, {

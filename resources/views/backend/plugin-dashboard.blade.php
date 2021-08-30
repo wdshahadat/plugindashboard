@@ -4,6 +4,12 @@
 @section('dynamic-css')
 <link rel="stylesheet" href="{{ assets('assets/plugins/daterangepicker/daterangepicker.css') }}">
 <link rel="stylesheet" href="{{ assets('assets/css/chart.css') }}">
+<style>
+    div.pre-l::after {
+        background-image: url({{ assets('assets/images/loading-spinner.gif') }});
+    }
+
+</style>
 @endsection
 
 @section('main-content')
@@ -19,7 +25,8 @@
                                 <i class="far fa-calendar-alt"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control float-right" id="dateRange">
+                        <input type="text" class="form-control float-right" id="dateRange"
+                            placeholder="Start to End Date">
                     </div>
                 </div>
 
@@ -119,13 +126,12 @@
             </div>
             <div class="col-6">
                 <h2>Activation / Deactivation</h2>
-                <div class="shadow-sm p-4 mb-5 bg-white rounded-3">
-                    <canvas id="pluginChart"></canvas>
+                <div class="shadow-sm p-4 mb-5 bg-white rounded-3 main-chart">
+                    <div>
+                        <canvas id="pluginChart"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12">
-            {{-- <img src="{{ assets('assets/images/dashboard.png') }}" alt=""> --}}
         </div>
     </div>
 </div>
@@ -137,6 +143,6 @@
 <script src="{{ assets('assets/js/Chart.min.js') }}"></script>
 <script>
     //Date range picker
-    $('#dateRange').daterangepicker();
+    $('#dateRange').daterangepicker().val('');
 </script>
 @endsection

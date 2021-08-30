@@ -33,7 +33,9 @@ img.user-image {
 .box-container>div>div {
     border-radius: 5px;
     min-height: 200px;
-    color: white !important
+    position: relative;
+    transition: all 0.2s;
+    color: white !important;
 }
 
 .box-container>div>div .details {
@@ -96,4 +98,37 @@ img.user-image {
     font-weight: bold;
     line-height: 1;
     margin-bottom: 25px;
+}
+
+div.box-container .col-3 {
+    overflow: hidden;
+    position: relative;
+}
+
+.pre-l::after {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    color:white !important;
+    background-position: center;
+    background-color: #000000ad;
+    background-repeat: no-repeat;
+    content: 'Loading...';
+    position: absolute;
+    font-weight: bolder;
+    z-index: 99;
+    left: 0;
+    top: 0;
+}
+.main-chart {
+    position: relative;
+}
+.main-chart .pre-l::after {
+    border-radius: 8px;
+}
+.box-container>div>div.pre-l::after {
+    border-radius: 5px;
 }

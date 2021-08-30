@@ -31,7 +31,7 @@ class DashboardController extends Controller
         foreach ($jsonData as $dateKey => $val) {
             $time = strtotime($dateKey);
 
-            if ($time > $from && $time <= $end) {
+            if ($time >= $from && $time <= $end) {
                 $dateKey = $format ? date_format(date_create($dateKey), $format) : $dateKey;
                 $dataStore[$dateKey] = floatval(trim($val));
             }
