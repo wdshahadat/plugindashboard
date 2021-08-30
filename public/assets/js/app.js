@@ -1,11 +1,11 @@
-
 let baseurl = document.querySelector('meta[name="base-url"]').content;
 
 // call plugin http request to get plugin info
 $(document).on("click", "#getInfo", function (e) {
     let slug = $('select[name="slug"]').val();
     let dateRange = $("#dateRange").val();
-    if (slug !== "null" && dateRange.length > 20) {
+    
+    if (slug !== "0" && dateRange.length > 20) {
         this.setAttribute("disabled", "disabled");
         $(".box-container>div>div, .main-chart > div").addClass("pre-l");
         axios
@@ -46,7 +46,6 @@ function chartHandle(response) {
     $(".deactivated h1").text(
         numberFormat(response.data.totalDeactivate * 1000)
     );
-
 
     $(".selected-plugin-text").text(
         $('select[name="slug"] option:selected').text()

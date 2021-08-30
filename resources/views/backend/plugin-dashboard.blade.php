@@ -8,7 +8,6 @@
     div.pre-l::after {
         background-image: url({{ assets('assets/images/loading-spinner.gif') }});
     }
-
 </style>
 @endsection
 
@@ -33,7 +32,7 @@
                 <div class="col-5">
                     <div class="input-group">
                         <select name="slug" class="form-control plugin-select">
-                            <option>Select Plugin</option>
+                            <option hidden value="0">Select Plugin</option>
                             <option value="woocommerce">WooCommerce</option>
                             <option value="contact-form-7">Contact Form 7</option>
                             <option value="classic-editor">Classic Editor</option>
